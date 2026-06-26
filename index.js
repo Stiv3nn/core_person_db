@@ -28,6 +28,20 @@ app.get('/', (req, res) => {
 
 });
 
+// Rotta API per ottenere tutti gli utenti del database
+app.get('/api/utenti', (req, res) => { // Definisce un punto di accesso (Endpoint). Quando il browser o il frontend busserà all'indirizzo http://localhost:3000/api/utenti usando il metodo HTTP GET, si attiverà questa funzione.
+    const query = 'SELECT * FROM utenti'; // Dichiarazione della stringa SQL
+
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Errore durante la query:', err.message);
+            return res.status(500).json({ error: 'Errore interno del server' });
+        }
+        // Restituisce i dati trovati in formato JSON
+        res.json(results);
+    })
+})
+
 // Avvia il server
 app.listen(PORT, () => {
     console.log(`Server backend in esecuzione sulla porta ${PORT}`);
