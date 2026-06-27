@@ -5,6 +5,10 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Configurazione per servire i file statici (in questo caso sono le nostre immagini)
+app.use(express.static('public')); // app.use(....) è una funzione di Express per registrare un MIDDLEWARE (è blocco di codice che si mette in mezzo tra la richiesta del client e la risposta del server) 
+// express.static('public') è un middleware che serve i file statici dalla cartella 'public'. In questo caso, le immagini caricate dagli utenti saranno accessibili tramite URL come http://localhost:3000/nome_immagine.jpg
+
 // Configurazione della connessione al Database 
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
