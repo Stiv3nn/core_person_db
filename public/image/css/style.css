@@ -1,0 +1,104 @@
+/* Reset di base per azzerare i margini di default del browser */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: #7f8c8d;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Griglia Principale: si adatta automaticamente allo schermo */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    padding-bottom: 3rem;
+}
+
+/* Stile della singola Card Utente */
+.card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Effetto al passaggio del mouse (hover) */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenitore immagine per mantenere le proporzioni */
+.card-img-container {
+    width: 100%;
+    height: 250px;
+    background-color: #eaeaea;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Taglia e adatta l'immagine senza distorcerla */
+}
+
+/* Informazioni testuali dentro la card */
+.card-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-info h3 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.card-info .email {
+    color: #3498db;
+    font-size: 0.9rem;
+    word-break: break-all;
+}
+
+/* Messaggio di caricamento */
+.caricamento {
+    text-align: center;
+    grid-column: 1 / -1;
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    padding: 2rem;
+}
