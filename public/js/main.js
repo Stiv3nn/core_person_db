@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('/api/utenti');
 
             // 6. Controllo di sicurezza: la chiamata è andata a buon fine?
-            if (!resposne) {
+            if (!response) {
                 throw new Error(`Errore del server: ${response.status}`);
             }
 
@@ -22,15 +22,42 @@ document.addEventListener('DOMContentLoaded', () => {
             // 8. Svuotiamo il testo "Caricamento utenti in corso..."
             container.innerHTML = '';
 
-        } catch (err) {
+            // 9. Cicliamo l'array degli utenti ricevuto dal database
+            utenti.forEach(utente => {
+
+                // 10. Creaiamo un elemento <div> virtuale nella memoria del browser
+                const card = document.createElement('div');
+
+                // 11. Gli assegniamo la clasee CSS "card" per dargli lo stile
+                card.classList.add('card');
+
+                // 12. Riempio la card con la struttura HTML e i dati dinamci dell'utente
+                card.innerHTML = `
+                    <div class="card-img-container">
+                        <img src="/image/${utente.foto_profilo}" alt="Foto di ${utente.nome}">
+                    </div>
+                        <div class="card-info">
+                        <h3>${utente.nome} ${utente.cognome}</h3>
+                        <p class="info_dati">${utente.eta}</p>
+                        <p class="info_dati">${utente.nazionalita}</p>
+                        <p class="info_dati">${utente.colore_occhi}</p>
+                    </div>
+                `;
+
+                // 13. Appendiamo la card appena creata dentro il contenitore principale
+                container.appendChild(card);
+
+            })
+
+        } catch (errore) {
 
             // Qui dentro gestiamo i problemi se il server è spento
-            console.err("Si è verificato un errore:", err);
+            console.errore("Si è verificato un errore:", errore);
         }
     }
 
     // 4. Invochiamo la funzione async
     caricaUtenti();
 
-})
+});
 

@@ -27,10 +27,10 @@ db.connect((err) => {
 });
 
 // Rotta di prova principale
-app.get('/', (req, res) => {
-    res.send('Il backend del progetto utenti è attivo');
+// app.get('/', (req, res) => {
+//     res.send('Il backend del progetto utenti è attivo');
 
-});
+// });
 
 // Rotta API per ottenere tutti gli utenti del database
 app.get('/api/utenti', (req, res) => { // Definisce un punto di accesso (Endpoint). Quando il browser o il frontend busserà all'indirizzo http://localhost:3000/api/utenti usando il metodo HTTP GET, si attiverà questa funzione.
